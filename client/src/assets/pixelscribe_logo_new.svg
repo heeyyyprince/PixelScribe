@@ -1,0 +1,27 @@
+<svg width="742" height="150" viewBox="0 0 742 150" xmlns="http://www.w3.org/2000/svg">
+  <!-- PixelScribe Logo -->
+  <style>
+    .logo-text { font-family: 'Arial', sans-serif; font-weight: bold; }
+    .primary { fill: #ff3366; }
+    .secondary { fill: #2d2d2d; }
+  </style>
+  
+  <!-- Pixel Icon -->
+  <g transform="translate(20, 30)">
+    <rect x="0" y="0" width="20" height="20" class="primary" />
+    <rect x="25" y="0" width="20" height="20" class="primary" />
+    <rect x="0" y="25" width="20" height="20" class="primary" />
+    <rect x="25" y="25" width="20" height="20" class="primary" />
+    <rect x="50" y="25" width="20" height="20" class="primary" />
+    <rect x="25" y="50" width="20" height="20" class="primary" />
+    <rect x="50" y="50" width="20" height="20" class="primary" />
+    <rect x="75" y="50" width="20" height="20" class="primary" />
+  </g>
+  
+  <!-- Text: PixelScribe -->
+  <text x="120" y="85" class="logo-text secondary" font-size="60">Pixel</text>
+  <text x="300" y="85" class="logo-text primary" font-size="60">Scribe</text>
+  
+  <!-- Tagline -->
+  <text x="120" y="115" class="secondary" font-size="18">AI-Powered Text to Image Generation</text>
+</svg>

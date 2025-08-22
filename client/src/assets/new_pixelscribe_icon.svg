@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Center Circuit Icon -->
+  <g transform="translate(100, 100)">
+    <!-- Main Square -->
+    <rect x="-30" y="-30" width="60" height="60" fill="none" stroke="#FF3366" stroke-width="3" />
+    
+    <!-- Circuit Lines -->
+    <line x1="-30" y1="0" x2="-60" y2="0" stroke="#FF3366" stroke-width="3" />
+    <line x1="30" y1="0" x2="60" y2="0" stroke="#FF3366" stroke-width="3" />
+    <line x1="0" y1="-30" x2="0" y2="-60" stroke="#FF3366" stroke-width="3" />
+    <line x1="0" y1="30" x2="0" y2="60" stroke="#FF3366" stroke-width="3" />
+    
+    <!-- Diagonal Lines -->
+    <line x1="-30" y1="-30" x2="-50" y2="-50" stroke="#FF3366" stroke-width="3" />
+    <line x1="30" y1="-30" x2="50" y2="-50" stroke="#FF3366" stroke-width="3" />
+    <line x1="-30" y1="30" x2="-50" y2="50" stroke="#FF3366" stroke-width="3" />
+    <line x1="30" y1="30" x2="50" y2="50" stroke="#FF3366" stroke-width="3" />
+    
+    <!-- Connection Points -->
+    <circle cx="-60" cy="0" r="5" fill="#FF3366" />
+    <circle cx="60" cy="0" r="5" fill="#FF3366" />
+    <circle cx="0" cy="-60" r="5" fill="#FF3366" />
+    <circle cx="0" cy="60" r="5" fill="#FF3366" />
+    <circle cx="-50" cy="-50" r="5" fill="#FF3366" />
+    <circle cx="50" cy="-50" r="5" fill="#FF3366" />
+    <circle cx="-50" cy="50" r="5" fill="#FF3366" />
+    <circle cx="50" cy="50" r="5" fill="#FF3366" />
+  </g>
+</svg>

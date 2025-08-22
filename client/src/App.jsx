@@ -18,8 +18,9 @@ const App = () => {
   const { showLogin } = useContext(AppContext)
 
   return (
-    <div className='px-4 sm:px-10 md:px-14 lg:px-28 min-h-screen bg-gradient-to-b from-teal-50 to-orange-50 '>
+    <div className='px-4 sm:px-10 md:px-14 lg:px-28 min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50 overflow-hidden'>
       <ToastContainer position='bottom-right' />
+      <div className='fixed inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_left,rgba(14,165,233,0.15),transparent_50%),radial-gradient(circle_at_top_right,rgba(217,70,239,0.15),transparent_50%)]'></div>
       <Navbar />
       {showLogin && <Login />}
       <Routes>
