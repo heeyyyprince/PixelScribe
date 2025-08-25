@@ -112,7 +112,7 @@ const Login = () => {
                     <input onChange={e => setPassword(e.target.value)} value={password} className='outline-none text-sm w-full' type="password" placeholder='Password' />
                 </div>
 
-                <p className='text-sm text-primary-600 my-4 cursor-pointer hover:underline'>Forgot password?</p>
+                <p className='text-sm text-primary-600 my-4 cursor-pointer hover:underline'></p>
 
                 <motion.button 
                     className='bg-gradient-to-r from-primary-600 to-primary-500 w-full text-white py-2.5 rounded-full font-medium shadow-md'
