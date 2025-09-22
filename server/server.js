@@ -18,8 +18,7 @@ app.use(express.json())
 // CORS configuration
 const allowedOrigins = [
   'http://localhost:3000', // Local development
-  'https://your-frontend-url.onrender.com', // Your Render frontend URL
-  'https://pixelscribe.onrender.com' // Example production URL
+  'https://pixelscribe-frontend.onrender.com' // Production frontend URL
 ];
 
 app.use(cors({
