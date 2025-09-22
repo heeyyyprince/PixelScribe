@@ -1,0 +1,36 @@
+# Render Blueprint for PixelScribe
+
+# Frontend service (React)
+services:
+  - type: web
+    name: pixelscribe-frontend
+    env: node
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: "./client/dist"
+    envVars:
+      - key: VITE_BACKEND_URL
+        sync: false
+      - key: VITE_RAZORPAY_KEY_ID
+        sync: false
+
+# Backend service (Node.js)
+  - type: web
+    name: pixelscribe-backend
+    env: node
+    buildCommand: cd server && npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: NODE_ENV
+        value: production

@@ -1,0 +1,19 @@
+{
+  "name": "pixelscribe",
+  "version": "1.0.0",
+  "description": "PixelScribe - AI-Powered Creative Suite",
+  "scripts": {
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install",
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run server",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": ["ai", "image-generation", "react", "node", "mongodb"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
