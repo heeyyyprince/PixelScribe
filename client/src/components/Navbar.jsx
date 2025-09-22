@@ -12,14 +12,14 @@ const Navbar = () => {
 
     return (
         <motion.nav 
-            className='flex items-center justify-between py-6 relative z-30 bg-gradient-to-br from-primary-50 via-white to-secondary-50 bg-opacity-90'
+            className='flex items-center justify-between py-6 px-4 sm:px-10 md:px-14 lg:px-28 relative z-30 bg-gradient-to-br from-primary-50 via-white to-secondary-50 bg-opacity-90'
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <Link to='/' className="flex items-center justify-center">
+            <Link to='/' className="flex items-center justify-center" onClick={() => window.location.href = '/'}>
                 <motion.img 
-                    className='w-44 sm:w-52 lg:w-64 mx-auto' 
+                    className='w-56 sm:w-64 lg:w-80 mx-auto' 
                     src={assets.pixelscribe_logo_new} 
                     alt="PixelScribe Logo" 
                     whileHover={{ scale: 1.05 }}
@@ -47,25 +47,33 @@ const Navbar = () => {
             <div className='hidden md:flex items-center gap-8'>
                 <motion.a 
                     href="/#features" 
-                    className='text-dark-600 hover:text-primary-600 font-medium'
+                    className='text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200'
                     whileHover={{ scale: 1.05 }}
                 >
                     Features
                 </motion.a>
                 <motion.a 
                     href="/#how-it-works" 
-                    className='text-dark-600 hover:text-primary-600 font-medium'
+                    className='text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200'
                     whileHover={{ scale: 1.05 }}
                 >
                     How It Works
                 </motion.a>
-                <motion.p 
-                    onClick={() => navigate('/buy')} 
-                    className='text-dark-600 hover:text-primary-600 font-medium cursor-pointer'
+                {/* Buy Credits (Desktop) */}
+                <motion.button
+                    onClick={() => {
+                        if (user) {
+                            navigate('/buy')
+                        } else {
+                            setShowLogin(true)
+                        }
+                    }}
+                    className='bg-gradient-to-r from-primary-600 to-primary-500 text-white px-5 py-2 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300'
                     whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
                 >
-                    Pricing
-                </motion.p>
+                    Buy Credits
+                </motion.button>
             </div>
 
             {/* User section */}
@@ -73,16 +81,7 @@ const Navbar = () => {
                 {
                     user
                         ? <div className='flex items-center gap-3'>
-                            <motion.button 
-                                onClick={() => navigate('/buy')} 
-                                className='flex items-center gap-2 bg-gradient-to-r from-primary-500 to-primary-600 text-white px-5 py-2 rounded-full'
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-                            >
-                                <img className='w-5' src={assets.credit_star} alt="" />
-                                <p className='text-sm font-medium'>Credits: {credit}</p>
-                            </motion.button>
-                            <p className='text-dark-600 pl-2'>Hi, {user?.name}</p>
+                            <p className='text-dark-600'>Hi, {user?.name}</p>
                             <div className='relative group'>
                                 <motion.img 
                                     className='w-10 rounded-full border-2 border-primary-300 cursor-pointer' 
@@ -113,8 +112,8 @@ const Navbar = () => {
                         : <div className='flex items-center gap-4'>
                             <motion.button 
                                 onClick={() => setShowLogin(true)} 
-                                className='bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-8 py-2.5 rounded-full font-medium shadow-md'
-                                whileHover={{ scale: 1.05, boxShadow: '0 10px 25px -5px rgba(14, 165, 233, 0.2)' }}
+                                className='bg-gradient-to-r from-primary-500 to-primary-600 text-white px-8 py-2.5 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300'
+                                whileHover={{ scale: 1.05 }}
                                 transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                             >
                                 Login
@@ -132,16 +131,25 @@ const Navbar = () => {
                     transition={{ duration: 0.2 }}
                 >
                     <div className='flex flex-col space-y-3 px-6'>
-                        <a href="/#features" className='py-2 text-dark-600 hover:text-primary-600 font-medium'>Features</a>
-                        <a href="/#how-it-works" className='py-2 text-dark-600 hover:text-primary-600 font-medium'>How It Works</a>
-                        <p onClick={() => navigate('/buy')} className='py-2 text-dark-600 hover:text-primary-600 font-medium cursor-pointer'>Pricing</p>
+                        <a href="/#features" className='py-2 text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200'>Features</a>
+                        <a href="/#how-it-works" className='py-2 text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200'>How It Works</a>
+                        <button
+                            onClick={() => {
+                                if (user) {
+                                    navigate('/buy')
+                                } else {
+                                    setShowLogin(true)
+                                }
+                                setIsMenuOpen(false)
+                            }}
+                            className='bg-gradient-to-r from-primary-600 to-primary-500 text-white py-2 px-4 rounded-full font-medium'
+                        >
+                            Buy Credits
+                        </button>
                         
                         {user ? (
                             <>
-                                <div className='flex items-center gap-2 py-2'>
-                                    <img className='w-5' src={assets.credit_star} alt="" />
-                                    <p className='text-sm font-medium text-dark-600'>Credits: {credit}</p>
-                                </div>
+                                <p className='py-2 text-dark-600 font-medium'>Hi, {user?.name}</p>
                                 <button onClick={logout} className='py-2 text-left text-dark-600 hover:text-primary-600 font-medium'>Logout</button>
                             </>
                         ) : (
@@ -150,7 +158,7 @@ const Navbar = () => {
                                     setShowLogin(true);
                                     setIsMenuOpen(false);
                                 }} 
-                                className='bg-gradient-to-r from-primary-600 to-secondary-600 text-white py-2 px-4 rounded-full font-medium mt-2'
+                                className='bg-gradient-to-r from-primary-500 to-primary-600 text-white py-2 px-4 rounded-full font-medium mt-2'
                             >
                                 Login
                             </button>

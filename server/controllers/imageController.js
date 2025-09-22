@@ -9,7 +9,8 @@ export const generateImage = async (req, res) => {
 
   try {
 
-    const { userId, prompt } = req.body
+    const { prompt } = req.body
+    const userId = req.userId || req.body.userId
 
     // Fetching User Details Using userId
     const user = await userModel.findById(userId)
@@ -19,7 +20,7 @@ export const generateImage = async (req, res) => {
     }
 
     // Checking User creditBalance
-    if (user.creditBalance === 0 || userModel.creditBalance < 0) {
+    if (user.creditBalance === 0 || user.creditBalance < 0) {
       return res.json({ success: false, message: 'No Credit Balance', creditBalance: user.creditBalance })
     }
 
@@ -43,7 +44,7 @@ export const generateImage = async (req, res) => {
     await userModel.findByIdAndUpdate(user._id, { creditBalance: user.creditBalance - 1 })
 
     // Sending Response
-    res.json({ success: true, message: "Background Removed", resultImage, creditBalance: user.creditBalance - 1 })
+    res.json({ success: true, message: "Image Generated", resultImage, creditBalance: user.creditBalance - 1 })
 
   } catch (error) {
     console.log(error.message)

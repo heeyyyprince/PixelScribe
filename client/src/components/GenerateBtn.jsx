@@ -12,7 +12,7 @@ const GenerateBtn = () => {
 
     const onClickHandler = () => {
         if (user) {
-            navigate('/result')
+            navigate('/text-to-image')
             scrollTo(0,0)
         } else {
             scrollTo(0,0)

@@ -13,7 +13,7 @@ const Footer = () => {
   ]
 
   return (
-    <footer className='mt-24 border-t border-dark-100 pt-10 pb-6'>
+    <footer className='mt-24 border-t border-dark-100 pt-10 pb-6 px-4 sm:px-10 md:px-14 lg:px-28'>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
         <div className='col-span-1 md:col-span-2'>
           <motion.img 

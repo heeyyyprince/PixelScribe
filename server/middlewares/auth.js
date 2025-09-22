@@ -2,29 +2,23 @@ import jwt from 'jsonwebtoken';
 
 // User authentication middleware
 const authUser = async (req, res, next) => {
-    // Extract the token from headers
-    const { token } = req.headers;
+    // Extract the token from headers (check both 'token' and 'authorization')
+    const token = req.headers.token || req.headers.authorization?.replace('Bearer ', '');
 
-    // Check if the token is missing
     if (!token) {
         return res.json({ success: false, message: 'Not Authorized. Login Again' });
     }
 
     try {
-        // Verify the token using the secret key
         const tokenDecode = jwt.verify(token, process.env.JWT_SECRET);
 
-        // Check if the decoded token contains a user ID
-        if (tokenDecode.id) {
-
-            // Attach user ID to the request body
-            req.body.userId = tokenDecode.id; 
-            
+        if (tokenDecode?.id) {
+            // Attach user ID to request object (not body) to avoid being overwritten by multer
+            req.userId = tokenDecode.id;
         } else {
             return res.json({ success: false, message: 'Not Authorized. Login Again' });
         }
 
-        // Call the next function in the stack
         next();
     } catch (error) {
         res.json({ success: false, message: error.message });

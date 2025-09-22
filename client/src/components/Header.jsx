@@ -9,10 +9,10 @@ const Header = () => {
     const navigate = useNavigate()
 
     const onClickHandler = () => {
-        if (user) {
-            navigate('/result')
-        } else {
-            setShowLogin(true)
+        // Navigate to features section to let user choose their tool
+        const featuresSection = document.getElementById('features')
+        if (featuresSection) {
+            featuresSection.scrollIntoView({ behavior: 'smooth' })
         }
     }
 
@@ -39,108 +39,167 @@ const Header = () => {
     }
 
     return (
-        <section className='relative py-20 overflow-hidden mt-8 md:mt-12' id='hero'>
-            {/* Background decorative elements */}
-            <div className='absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow'></div>
-            <div className='absolute bottom-20 right-10 w-72 h-72 bg-secondary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow'></div>
+        <section className='relative min-h-screen flex items-center justify-center overflow-hidden' id='hero'>
+            {/* Advanced Background */}
+            <div className='absolute inset-0 bg-gradient-to-br from-slate-50 via-purple-50/30 to-pink-50/30'></div>
+            
+            {/* Animated Background Elements */}
+            <div className='absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-purple-300/20 to-pink-300/20 rounded-full blur-3xl animate-pulse-slow'></div>
+            <div className='absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-blue-300/20 to-cyan-300/20 rounded-full blur-3xl animate-pulse-slow'></div>
+            <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-indigo-200/10 to-purple-200/10 rounded-full blur-3xl animate-spin-slow'></div>
+            
+            {/* Floating Elements */}
+            <div className='absolute top-20 left-20 w-4 h-4 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full animate-float opacity-60'></div>
+            <div className='absolute top-40 right-32 w-6 h-6 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full animate-bounce-slow opacity-40'></div>
+            <div className='absolute bottom-32 left-32 w-3 h-3 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full animate-ping-slow opacity-50'></div>
             
             <motion.div
-                className='flex flex-col justify-center items-center text-center relative z-10'
+                className='flex flex-col justify-center items-center text-center relative z-10 px-4 max-w-7xl mx-auto'
                 variants={containerVariants}
                 initial='hidden'
                 animate='visible'
                 viewport={{ once: true }}
             >
+                {/* Hero Badge */}
                 <motion.div
-                    className='inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-6 py-2 rounded-full border border-primary-200 shadow-sm relative z-20'
+                    className='inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full border border-gray-200 shadow-lg mb-6'
                     variants={itemVariants}
                 >
-                    <p className='text-dark-600 font-medium'>Premium Text to Image Generator</p>
-                    <img src={assets.star_icon} alt="Star" className='w-5 h-5 animate-float' />
+                    <div className='flex items-center gap-2'>
+                        <div className='w-2 h-2 bg-green-500 rounded-full animate-pulse'></div>
+                        <span className='text-gray-700 font-medium text-sm'>AI-Powered Creative Suite</span>
+                    </div>
                 </motion.div>
 
+                {/* Main Headline */}
                 <motion.h1
-                    className='text-center mx-auto mt-8 text-4xl sm:text-6xl md:text-7xl font-bold max-w-4xl leading-tight'
+                    className='text-4xl sm:text-5xl lg:text-6xl font-bold max-w-4xl leading-tight mb-6 text-gray-800'
                     variants={itemVariants}
                 >
-                    Transform <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500'>Words</span> into <span className='text-transparent bg-clip-text bg-gradient-to-r from-secondary-500 to-primary-500'>Visual Magic</span>
+                    <span className='block'>Transform Your</span>
+                    <span className='block bg-gradient-to-r from-primary-500 via-primary-600 to-secondary-600 bg-clip-text text-transparent'>
+                        Ideas
+                    </span>
+                    <span className='block'>into Visual Magic</span>
                 </motion.h1>
 
+                {/* Subtitle */}
                 <motion.p
-                    className='text-center max-w-2xl mx-auto mt-6 text-lg text-dark-600'
+                    className='text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed'
                     variants={itemVariants}
                 >
-                    PixelScribe uses advanced AI to turn your text descriptions into stunning visuals in seconds. Unleash your creativity without design skills.
+                    Experience the future of creativity with our comprehensive AI toolkit. 
+                    Generate stunning images, enhance photos, remove backgrounds, and apply artistic styles - all in one platform.
                 </motion.p>
 
-                <motion.div className='flex flex-col sm:flex-row gap-4 mt-10' variants={itemVariants}>
+                {/* CTA Buttons */}
+                <motion.div className='flex flex-col sm:flex-row gap-6 mb-16' variants={itemVariants}>
                     <motion.button
-                        className='px-8 py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-medium rounded-full shadow-lg flex items-center justify-center gap-2 group'
-                        whileHover={{ scale: 1.05, boxShadow: '0 10px 25px -5px rgba(14, 165, 233, 0.4)' }}
-                        whileTap={{ scale: 0.98 }}
+                        className='group relative px-10 py-5 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold text-lg rounded-2xl shadow-xl overflow-hidden'
+                        whileHover={{ 
+                            scale: 1.05, 
+                            boxShadow: '0 20px 40px -12px rgba(255, 51, 102, 0.4)'
+                        }}
+                        whileTap={{ scale: 0.95 }}
                         onClick={onClickHandler}
                     >
-                        <span>Start Creating</span>
-                        <svg className='w-5 h-5 group-hover:translate-x-1 transition-transform' fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-                            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M13 7l5 5m0 0l-5 5m5-5H6' />
-                        </svg>
+                        <div className='absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
+                        <span className='relative flex items-center gap-3'>
+                            <span>Explore AI Tools</span>
+                            <svg className='w-6 h-6 group-hover:translate-x-2 transition-transform duration-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M13 7l5 5m0 0l-5 5m5-5H6' />
+                            </svg>
+                        </span>
                     </motion.button>
                     
                     <motion.a
                         href='/#how-it-works'
-                        className='px-8 py-3 bg-white text-dark-800 font-medium rounded-full border border-dark-200 shadow-sm hover:bg-dark-50 transition-colors'
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.98 }}
+                        className='group px-10 py-5 bg-white/90 backdrop-blur-xl text-gray-800 font-bold text-lg rounded-2xl border-2 border-gray-200 shadow-xl hover:bg-white hover:border-primary-300 transition-all duration-300'
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
                     >
-                        How It Works
+                        <span className='flex items-center gap-3'>
+                            <span>How It Works</span>
+                            <svg className='w-6 h-6 group-hover:rotate-90 transition-transform duration-300' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M19 9l-7 7-7-7' />
+                            </svg>
+                        </span>
                     </motion.a>
                 </motion.div>
 
+                {/* Feature Showcase Grid */}
                 <motion.div
-                    className='mt-16 relative'
+                    className='relative max-w-6xl mx-auto'
                     variants={itemVariants}
                 >
-                    <div className='absolute inset-0 bg-gradient-to-b from-transparent to-white/80 z-10 pointer-events-none'></div>
+                    {/* Background Glow */}
+                    <div className='absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-blue-500/20 rounded-3xl blur-3xl'></div>
+                    
                     <motion.div 
-                        className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 p-4 bg-white/30 backdrop-blur-sm rounded-xl border border-dark-100 shadow-lg'
-                        initial={{ y: 100, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.8, duration: 0.8, type: 'spring' }}
+                        className='relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 p-8 bg-white/40 backdrop-blur-2xl rounded-3xl border border-white/30 shadow-2xl'
+                        initial={{ y: 100, opacity: 0, scale: 0.9 }}
+                        animate={{ y: 0, opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.8, duration: 0.8, type: 'spring', stiffness: 100 }}
                     >
                         {Array(6).fill('').map((_, index) => (
                             <motion.div 
                                 key={index} 
-                                className='relative group overflow-hidden rounded-lg shadow-md'
+                                className='group relative overflow-hidden rounded-2xl shadow-xl bg-gradient-to-br from-white/50 to-white/30 backdrop-blur-sm border border-white/40'
                                 variants={imageVariants}
-                                whileHover={{ y: -5, scale: 1.05, transition: { duration: 0.2 } }}
+                                whileHover={{ 
+                                    y: -10, 
+                                    scale: 1.1, 
+                                    rotateY: 5,
+                                    transition: { duration: 0.3 } 
+                                }}
                             >
                                 <img 
                                     className='w-full h-auto object-cover aspect-square'
                                     src={index % 2 === 0 ? assets.sample_img_2 : assets.sample_img_1}
-                                    alt={`Sample generated image ${index + 1}`}
+                                    alt={`AI generated sample ${index + 1}`}
                                 />
-                                <div className='absolute inset-0 bg-gradient-to-t from-dark-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-2'>
-                                    <p className='text-white text-xs'>Prompt #{index + 1}</p>
+                                <div className='absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center p-4'>
+                                    <div className='text-center'>
+                                        <p className='text-white font-bold text-sm mb-1'>AI Generated</p>
+                                        <div className='w-full h-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full'></div>
+                                    </div>
+                                </div>
+                                
+                                {/* Floating Badge */}
+                                <div className='absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+                                    <svg className='w-3 h-3 text-white' fill='currentColor' viewBox='0 0 20 20'>
+                                        <path fillRule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clipRule='evenodd' />
+                                    </svg>
                                 </div>
                             </motion.div>
                         ))}
                     </motion.div>
                 </motion.div>
 
-                <motion.p
-                    className='mt-4 text-dark-500 text-sm'
+                {/* Bottom Stats */}
+                <motion.div
+                    className='mt-12 flex flex-wrap justify-center gap-8 text-center'
                     variants={itemVariants}
                 >
-                    Images generated with PixelScribe AI
-                </motion.p>
+                    <div className='flex flex-col items-center'>
+                        <div className='text-3xl font-black bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent'>1M+</div>
+                        <div className='text-gray-600 font-medium'>Images Generated</div>
+                    </div>
+                    <div className='flex flex-col items-center'>
+                        <div className='text-3xl font-black bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent'>50K+</div>
+                        <div className='text-gray-600 font-medium'>Happy Creators</div>
+                    </div>
+                    <div className='flex flex-col items-center'>
+                        <div className='text-3xl font-black bg-gradient-to-r from-secondary-600 to-primary-500 bg-clip-text text-transparent'>99.9%</div>
+                        <div className='text-gray-600 font-medium'>Uptime</div>
+                    </div>
+                </motion.div>
             </motion.div>
         </section>
     )
 }
 
 export default Header
-
-
 // const Header = () => {
 //     return (
 //         <div className='text-center'>

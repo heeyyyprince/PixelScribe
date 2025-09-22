@@ -69,7 +69,11 @@ const loginUser = async (req, res) => {
 const userCredits = async (req, res) => {
     try {
 
-        const { userId } = req.body
+        const userId = req.userId || req.body.userId
+
+        if (!userId) {
+            return res.json({ success: false, message: 'Not Authorized. Login Again' })
+        }
 
         // Fetching userdata using userId
         const user = await userModel.findById(userId)
@@ -91,8 +95,8 @@ const razorpayInstance = new razorpay({
 // Payment API to add credits
 const paymentRazorpay = async (req, res) => {
     try {
-
-        const { userId, planId } = req.body
+        const { planId } = req.body
+        const userId = req.userId || req.body.userId
 
         const userData = await userModel.findById(userId)
 
@@ -205,8 +209,8 @@ const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY)
 // Payment API to add credits ( Stripe )
 const paymentStripe = async (req, res) => {
     try {
-
-        const { userId, planId } = req.body
+        const { planId } = req.body
+        const userId = req.userId || req.body.userId
         const { origin } = req.headers
 
         const userData = await userModel.findById(userId)

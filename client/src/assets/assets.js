@@ -53,6 +53,24 @@ export const assets = {
 
 export const stepsData = [
     {
+      title: 'Choose Your Tool',
+      description: 'Select from our suite of AI-powered creative tools: Text to Image, Image Enhancer, Background Remover, Style Transfer, Image Colorizer, or Object Remover.',
+      icon: step_icon_1,
+    },
+    {
+      title: 'Upload or Create',
+      description: 'Either upload your image for processing or describe your vision for AI generation.',
+      icon: step_icon_2,
+    },
+    {
+      title: 'Download & Use',
+      description: 'Get your professionally processed result in seconds, ready for any project.',
+      icon: step_icon_3,
+    },
+  ];
+
+export const textToImageSteps = [
+    {
       title: 'Describe Your Vision',
       description: 'Type a phrase, sentence, or paragraph that describes the image you want to create.',
       icon: step_icon_1,
