@@ -103,11 +103,6 @@ PixelScribe is a **MERN stack application** that offers a comprehensive suite of
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
 
 ## 🙏 Acknowledgments
 
@@ -116,4 +111,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Built with ❤️ by [Your Name] | [GitHub](https://github.com/heeyyyprince)
+Built with ❤️ by Prince | [GitHub](https://github.com/heeyyyprince)
